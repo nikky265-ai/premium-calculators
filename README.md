@@ -1,59 +1,86 @@
-# PremiumCalculator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.10.
+# Premium Calculator UI (Angular 17)
 
-## Development server
+## 📘 Overview
+This Angular app provides the UI for the Premium Calculator API.
 
-To start a local development server, run:
+Features:
+- Reactive form  
+- Auto-calculate mode  
+- In-memory API integration via proxy  
+- Standalone Components (Angular 17+)  
 
-```bash
-ng serve
+---
+
+## 🚀 Running Angular
+
+### 1. Install dependencies
+```
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+### 2. Proxy setup
+`proxy.conf.json`:
+```json
+{
+  "/api": {
+    "target": "https://localhost:44320",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+### 3. Start Angular
+```
+npm start
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
+Runs at:
+```
+http://localhost:4200
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+## 📂 Structure
+```
+premium-calculator
+ ├── proxy.conf.json
+ ├── src
+ │    ├── main.ts
+ │    ├── app/
+ │         ├── app.ts
+ │         ├── app.html
+ │         ├── app.scss
+ │         ├── models/
+ │         ├── services/
+ │         └── validators/
+ └── package.json
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 🧩 Key Components
 
-```bash
-ng e2e
-```
+### Service — premium.service.ts
+Handles:
+- GET /api/occupations
+- POST /api/premium/calculate
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### app.ts
+Main logic, state, auto-calc, form validation.
 
-## Additional Resources
+### one-of.validator.ts
+Ensures:
+- Either DOB OR AgeNextBirthday is provided.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## 📝 Assumptions
+- API uses in-memory data  
+- Proxy avoids CORS issues  
+- No routing required  
+- No state management library needed  
+
