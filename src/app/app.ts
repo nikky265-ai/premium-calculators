@@ -11,7 +11,7 @@ import { Occupation } from './models/occupation.model';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.css'
 })
 export class AppComponent {
   private fb = inject(FormBuilder);
